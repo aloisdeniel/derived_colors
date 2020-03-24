@@ -1,6 +1,6 @@
 # derived_colors
 
-![logo](logo.png)
+![logo](https://github.com/aloisdeniel/derived_colors/raw/master/logo.png)
 
 Generate color variants.
 
