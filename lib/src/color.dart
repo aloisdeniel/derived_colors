@@ -78,7 +78,7 @@ extension ColorExtenions on Color {
 
   /// Find a subtle variant of a color (for example, for displaying hover states).
   ///
-  /// The [amount] (defaults to `0.06`) is substracted from color lightness is lightness is
+  /// The [amount] (defaults to `0.06`) is substracted from color lightness is lightness if
   /// greater than [darkenLimit] (defaults to `0.2`), else it is added to color lightness.
   Color decline([double amount = 0.06, double darkenLimit = 0.2]) {
     if (amount == null) return this;
@@ -90,7 +90,8 @@ extension ColorExtenions on Color {
   }
 
   /// Darken the color by removing the given [amount] to lightness.
-  Color darken(double amount) {
+  Color darken([double amount = 0.06]) {
+    if (amount == null) return this;
     final hsl = HSLColor.fromColor(this);
     return hsl
         .withLightness(
@@ -100,7 +101,8 @@ extension ColorExtenions on Color {
   }
 
   /// Lighten the color by adding the given [amount] to lightness.
-  Color lighten(double amount) {
+  Color lighten([double amount = 0.06]) {
+    if (amount == null) return this;
     final hsl = HSLColor.fromColor(this);
     return hsl
         .withLightness(
