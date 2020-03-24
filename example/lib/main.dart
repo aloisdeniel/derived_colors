@@ -32,35 +32,49 @@ class _ExamplePageState extends State<ExamplePage> {
         child: SafeArea(
           child: Column(
             children: <Widget>[
-              Palette(swatch.primary),
-              Palette(swatch.link),
-              Palette(swatch.info),
-              Palette(swatch.danger),
-              Palette(swatch.warning),
-              Palette(swatch.grey),
-              Wrap(
-                spacing: 8.0,
-                runSpacing: 8.0,
-                children: <Widget>[
-                  Button.regular(color: swatch.primary, text: 'Example'),
-                  Button.regular(color: swatch.link, text: 'Example'),
-                  Button.regular(color: swatch.info, text: 'Example'),
-                  Button.regular(color: swatch.danger, text: 'Example'),
-                  Button.regular(color: swatch.warning, text: 'Example'),
-                  Button.regular(color: swatch.success, text: 'Example'),
-                ],
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Palette(swatch.primary),
+                    Palette(swatch.link),
+                    Palette(swatch.info),
+                    Palette(swatch.danger),
+                    Palette(swatch.warning),
+                    Palette(swatch.grey),
+                  ],
+                ),
               ),
-              Wrap(
-                spacing: 8.0,
-                runSpacing: 8.0,
-                children: <Widget>[
-                  Button.light(color: swatch.primary, text: 'Example'),
-                  Button.light(color: swatch.link, text: 'Example'),
-                  Button.light(color: swatch.info, text: 'Example'),
-                  Button.light(color: swatch.danger, text: 'Example'),
-                  Button.light(color: swatch.warning, text: 'Example'),
-                  Button.light(color: swatch.success, text: 'Example'),
-                ],
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Wrap(
+                  spacing: 8.0,
+                  runSpacing: 8.0,
+                  children: <Widget>[
+                    Button.regular(color: swatch.primary, text: 'Example'),
+                    Button.regular(color: swatch.link, text: 'Example'),
+                    Button.regular(color: swatch.info, text: 'Example'),
+                    Button.regular(color: swatch.danger, text: 'Example'),
+                    Button.regular(color: swatch.warning, text: 'Example'),
+                    Button.regular(color: swatch.success, text: 'Example'),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Wrap(
+                  spacing: 8.0,
+                  runSpacing: 8.0,
+                  children: <Widget>[
+                    Button.light(color: swatch.primary, text: 'Example'),
+                    Button.light(color: swatch.link, text: 'Example'),
+                    Button.light(color: swatch.info, text: 'Example'),
+                    Button.light(color: swatch.danger, text: 'Example'),
+                    Button.light(color: swatch.warning, text: 'Example'),
+                    Button.light(color: swatch.success, text: 'Example'),
+                  ],
+                ),
               ),
             ],
           ),
@@ -78,6 +92,7 @@ class Palette extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Container(
           width: 24,

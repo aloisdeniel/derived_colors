@@ -1,5 +1,7 @@
 # derived_colors
 
+![logo](logo.png)
+
 Generate color variants.
 
 ## Usage
