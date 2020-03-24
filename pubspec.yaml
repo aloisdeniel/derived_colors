@@ -1,6 +1,6 @@
 name: derived_colors
 description: Generate color variants.
-version: 0.1.2
+version: 0.1.4
 homepage: https://github.com/aloisdeniel/derived_colors
 
 environment:

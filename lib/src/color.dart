@@ -84,9 +84,13 @@ extension ColorExtenions on Color {
     if (amount == null) return this;
     final hsl = HSLColor.fromColor(this);
     if (hsl.lightness > darkenLimit) {
-      return darken(amount);
+      amount *= -1.0;
     }
-    return lighten(amount);
+    return hsl
+        .withLightness(
+          (hsl.lightness + amount).clamp(0, 1),
+        )
+        .toColor();
   }
 
   /// Darken the color by removing the given [amount] to lightness.
