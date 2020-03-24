@@ -187,7 +187,7 @@ class _LightButtonState extends State<Button> {
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 200),
           decoration: BoxDecoration(
-            color: widget.backgroundColor.decline(
+            color: widget.backgroundColor.subtle(
               isActive ? 0.06 : (isHover ? 0.03 : 0.0),
             ),
             borderRadius: BorderRadius.circular(4.0),

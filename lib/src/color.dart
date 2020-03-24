@@ -80,7 +80,7 @@ extension ColorExtenions on Color {
   ///
   /// The [amount] (defaults to `0.06`) is substracted from color lightness is lightness if
   /// greater than [darkenLimit] (defaults to `0.2`), else it is added to color lightness.
-  Color decline([double amount = 0.06, double darkenLimit = 0.2]) {
+  Color subtle([double amount = 0.06, double darkenLimit = 0.2]) {
     if (amount == null) return this;
     final hsl = HSLColor.fromColor(this);
     if (hsl.lightness > darkenLimit) {

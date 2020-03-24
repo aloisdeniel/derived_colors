@@ -1,3 +1,7 @@
+## [0.2.0] - 2020/03/24
+
+* Renamed [ColorExtensions.decline] to [ColorExtensions.subtle].
+
 ## [0.1.4] - 2020/03/24
 
 * Better performance on [ColorExtensions.decline].
