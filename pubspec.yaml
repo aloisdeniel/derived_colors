@@ -1,0 +1,17 @@
+name: derived_colors
+description: Generate color variants.
+version: 0.0.1
+homepage: https://github.com/aloisdeniel/derived_colors
+
+environment:
+  sdk: ">=2.6.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
