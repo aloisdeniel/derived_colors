@@ -83,7 +83,7 @@ extension ColorExtenions on Color {
   Color decline([double amount = 0.06, double darkenLimit = 0.2]) {
     if (amount == null) return this;
     final hsl = HSLColor.fromColor(this);
-    if (hsl.lightness > 0.2) {
+    if (hsl.lightness > darkenLimit) {
       return darken(amount);
     }
     return lighten(amount);
