@@ -13,7 +13,6 @@ final color = Color(0xFFFF0000);
 final light = color.variants.light;
 final dark = color.variants.dark;
 final invert = color.variants.invert;
-final invert = color.variants.invert;
 
 final hoverColor = color.derive();
 ```
