@@ -14,7 +14,7 @@ final light = color.variants.light;
 final dark = color.variants.dark;
 final invert = color.variants.invert;
 
-final hoverColor = color.derive();
+final hoverColor = color.subtle();
 ```
 
 ## Thanks
