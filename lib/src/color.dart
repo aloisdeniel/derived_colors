@@ -61,19 +61,23 @@ extension ColorExtenions on Color {
   Color findLight() {
     final hsl = HSLColor.fromColor(this);
     var lightness = math.max(0.96, hsl.lightness);
-    return hsl.withLightness(lightness).toColor();
+    return hsl
+        .withSaturation(_isWhiteOrBlack ? 0 : hsl.saturation)
+        .withLightness(lightness.clamp(0.0, 1.0))
+        .toColor();
   }
 
   /// Finds a darker variant of the color.
   Color findDark() {
     final hsl = HSLColor.fromColor(this);
     final luminance = computeLuminance();
-    const baseLuminance = 0.29;
-    final luminanceDelta = (0.53 - luminance);
-    final targetLuminance =
-        (baseLuminance + (luminanceDelta * 0.53)).roundToDouble();
-    final lightness = math.max(baseLuminance, targetLuminance);
-    return hsl.withLightness(lightness).toColor();
+    const baseLuminance = 0.30;
+    final luminanceDelta = 0.15;
+    return hsl
+        .withSaturation(_isWhiteOrBlack ? 0 : hsl.saturation)
+        .withLightness(baseLuminance +
+            luminanceDelta * ((luminance - 0.5) * 2.0).clamp(0.0, 1.0))
+        .toColor();
   }
 
   /// Find a subtle variant of a color (for example, for displaying hover states).
@@ -87,33 +91,32 @@ extension ColorExtenions on Color {
       amount *= -1.0;
     }
     return hsl
+        .withSaturation(_isWhiteOrBlack ? 0 : hsl.saturation)
         .withLightness(
-          (hsl.lightness + amount).clamp(0, 1),
+          (hsl.lightness + amount).clamp(0.0, 1.0),
         )
         .toColor();
   }
 
   /// Darken the color by removing the given [amount] to lightness.
-  Color darken([double amount = 0.06]) {
-    if (amount == null) return this;
-    final hsl = HSLColor.fromColor(this);
-    return hsl
-        .withLightness(
-          (hsl.lightness - amount).clamp(0, 1),
-        )
-        .toColor();
-  }
+  Color darken([double amount = 0.06]) => lighten(-amount);
 
   /// Lighten the color by adding the given [amount] to lightness.
   Color lighten([double amount = 0.06]) {
     if (amount == null) return this;
+
     final hsl = HSLColor.fromColor(this);
     return hsl
+        .withSaturation(_isWhiteOrBlack ? 0 : hsl.saturation)
         .withLightness(
-          (hsl.lightness + amount).clamp(0, 1),
+          (hsl.lightness + amount).clamp(0.0, 1.0),
         )
         .toColor();
   }
+
+  bool get _isWhiteOrBlack =>
+      (red == 0 && blue == 0 && green == 0) ||
+      (red == 255 && blue == 255 && green == 255);
 }
 
 /// Keep a global cache for already calculated variants.

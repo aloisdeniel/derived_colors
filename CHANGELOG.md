@@ -1,3 +1,15 @@
+## [0.2.3] - 2020/03/24
+
+* Fixing black and white saturation issue with updated lightness.
+
+## [0.2.2] - 2020/03/24
+
+* Updated [ColorExtensions.findDark] calculation.
+
+## [0.2.1] - 2020/03/24
+
+* Fixed issue with hot reloading.
+
 ## [0.2.0] - 2020/03/24
 
 * Renamed [ColorExtensions.decline] to [ColorExtensions.subtle].
