@@ -10,13 +10,13 @@ class Swatch {
   final Color grey;
 
   const Swatch({
-    @required this.primary,
-    @required this.info,
-    @required this.link,
-    @required this.danger,
-    @required this.success,
-    @required this.warning,
-    @required this.grey,
+    required this.primary,
+    required this.info,
+    required this.link,
+    required this.danger,
+    required this.success,
+    required this.warning,
+    required this.grey,
   });
 }
 

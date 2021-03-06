@@ -3,7 +3,7 @@ import 'package:example/swatches.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
-
+ 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -142,14 +142,14 @@ class Button extends StatefulWidget {
   final String text;
 
   const Button({
-    @required this.backgroundColor,
-    @required this.foregroundColor,
-    @required this.text,
+    required this.backgroundColor,
+    required this.foregroundColor,
+    required this.text,
   });
 
   factory Button.light({
-    @required String text,
-    @required Color color,
+    required String text,
+    required Color color,
   }) =>
       Button(
         backgroundColor: color.variants.light,
@@ -158,8 +158,8 @@ class Button extends StatefulWidget {
       );
 
   factory Button.regular({
-    @required String text,
-    @required Color color,
+    required String text,
+    required Color color,
   }) =>
       Button(
         backgroundColor: color.variants.regular,

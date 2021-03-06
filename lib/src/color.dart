@@ -19,10 +19,10 @@ class ColorVariants {
 
   /// Creates a new set of variants from all the colors.
   const ColorVariants({
-    @required this.regular,
-    @required this.light,
-    @required this.dark,
-    @required this.invert,
+    required this.regular,
+    required this.light,
+    required this.dark,
+    required this.invert,
   });
 
   /// Generates automatically variants, based on an input [color].
