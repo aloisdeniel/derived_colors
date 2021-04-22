@@ -1,3 +1,11 @@
+## [0.3.0] - 2021/04/22
+
+* Added support for null safety.
+
+## [0.2.4] - 2020/03/24
+
+* Fixing black and white saturation issue with updated lightness.
+
 ## [0.2.3] - 2020/03/24
 
 * Fixing black and white saturation issue with updated lightness.

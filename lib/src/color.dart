@@ -19,10 +19,10 @@ class ColorVariants {
 
   /// Creates a new set of variants from all the colors.
   const ColorVariants({
-    @required this.regular,
-    @required this.light,
-    @required this.dark,
-    @required this.invert,
+    required this.regular,
+    required this.light,
+    required this.dark,
+    required this.invert,
   });
 
   /// Generates automatically variants, based on an input [color].
@@ -61,10 +61,13 @@ extension ColorExtenions on Color {
   Color findLight() {
     final hsl = HSLColor.fromColor(this);
     var lightness = math.max(0.96, hsl.lightness);
-    return hsl
-        .withSaturation(_isWhiteOrBlack ? 0 : hsl.saturation)
-        .withLightness(lightness.clamp(0.0, 1.0))
-        .toColor();
+
+    if (_isWhiteOrBlack) {
+      final v = (lightness * 255).round().clamp(0, 255);
+      return Color.fromARGB(alpha, v, v, v);
+    }
+
+    return hsl.withLightness(lightness.clamp(0.0, 1.0)).toColor();
   }
 
   /// Finds a darker variant of the color.
@@ -73,10 +76,17 @@ extension ColorExtenions on Color {
     final luminance = computeLuminance();
     const baseLuminance = 0.30;
     final luminanceDelta = 0.15;
+    final lightness = baseLuminance +
+        luminanceDelta * ((luminance - 0.5) * 2.0).clamp(0.0, 1.0);
+
+    if (_isWhiteOrBlack) {
+      final v = (lightness * 255).round().clamp(0, 255);
+      return Color.fromARGB(alpha, v, v, v);
+    }
+
     return hsl
+        .withLightness(lightness)
         .withSaturation(_isWhiteOrBlack ? 0 : hsl.saturation)
-        .withLightness(baseLuminance +
-            luminanceDelta * ((luminance - 0.5) * 2.0).clamp(0.0, 1.0))
         .toColor();
   }
 
@@ -85,13 +95,17 @@ extension ColorExtenions on Color {
   /// The [amount] (defaults to `0.06`) is substracted from color lightness is lightness if
   /// greater than [darkenLimit] (defaults to `0.2`), else it is added to color lightness.
   Color subtle([double amount = 0.06, double darkenLimit = 0.2]) {
-    if (amount == null) return this;
     final hsl = HSLColor.fromColor(this);
     if (hsl.lightness > darkenLimit) {
       amount *= -1.0;
     }
+
+    if (_isWhiteOrBlack) {
+      final v = (red + amount * 255).round().clamp(0, 255);
+      return Color.fromARGB(alpha, v, v, v);
+    }
+
     return hsl
-        .withSaturation(_isWhiteOrBlack ? 0 : hsl.saturation)
         .withLightness(
           (hsl.lightness + amount).clamp(0.0, 1.0),
         )
@@ -103,11 +117,13 @@ extension ColorExtenions on Color {
 
   /// Lighten the color by adding the given [amount] to lightness.
   Color lighten([double amount = 0.06]) {
-    if (amount == null) return this;
+    if (_isWhiteOrBlack) {
+      final v = (red + amount * 255).round().clamp(0, 255);
+      return Color.fromARGB(alpha, v, v, v);
+    }
 
     final hsl = HSLColor.fromColor(this);
     return hsl
-        .withSaturation(_isWhiteOrBlack ? 0 : hsl.saturation)
         .withLightness(
           (hsl.lightness + amount).clamp(0.0, 1.0),
         )
