@@ -1,3 +1,8 @@
+## [0.4.0] - 2021/09/09
+
+* Migrated to Dart `2.17`. 
+* Added `WeakReference`s for cached variants. 
+
 ## [0.3.0] - 2021/04/22
 
 * Added support for null safety.
